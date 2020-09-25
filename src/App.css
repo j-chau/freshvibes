@@ -1,0 +1,13 @@
+:root {
+  --title-font: 'Abril Fatface', cursive;
+  --body-font: 'Raleway', sans-serif;
+}
+
+body {
+  font-size: 62.5%;
+  font-family: var(--body-font);
+  
+}
+h1 {
+  font-family: var(--title-font);
+}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import firebase from './firebase.js';
 
+import Post from './components/Posts.js';
+
 import './App.css';
 
 // click for new post:
@@ -15,10 +17,49 @@ import './App.css';
 
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      posts: []
+    }
+  }
+
+  componentDidMount() {
+    const dbRef = firebase.database().ref();
+    dbRef.on("value", res => {
+      const newState = [];
+      const data = res.val();
+      data.forEach(el => {
+        for (let i in el) {
+          newState.push({
+            key: i,
+            content: el[i]
+          })
+        }
+      });
+      this.setState({
+        posts: newState
+      })
+    })
+  }
+
   render() {
+    console.log(this.state);
     return (
       <div className="App">
         <h1>fresh vibes</h1>
+        {this.state.posts.map(el => {
+          const { description, header, songList } = el.content;
+          return (
+            <Post
+              key={el.key}
+              header={header}
+              description={description}
+              songList={songList}
+            />
+          )
+        })}
+
       </div>
     );
   }
