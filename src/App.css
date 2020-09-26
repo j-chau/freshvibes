@@ -1,13 +1,67 @@
 :root {
-  --title-font: 'Abril Fatface', cursive;
-  --body-font: 'Raleway', sans-serif;
+  --titleFont: 'Abril Fatface', cursive;
+  --bodyFont: 'Raleway', sans-serif;
+
+  /* COLOURS */
+  --bgColour: #f5f1ea;
+  --bgAccent: #d0c9be;
+  --postBg: #97a2a7;
+
+  /* STYLING */
+  --borderRad: 10px;
 }
 
-body {
+html { 
   font-size: 62.5%;
-  font-family: var(--body-font);
-  
+}
+body {
+  font-size: 2rem;
+  font-family: var(--bodyFont);
+  font-weight: 300;
+  color: var(--bgColour);
+  background-color: var(--bgColour);
+  /* background-image: 
+    repeating-linear-gradient(90deg,
+      transparent,
+      transparent 30px,
+      var(--bg-accent) 30px,
+      var(--bg-accent) 31px)*/
+} 
+h1,h2 {
+  font-family: var(--titleFont);
+}
+.App {
+  width: 90%;
+  max-width: 768px;
+  margin:  auto;
+}
+.block {
+  background-color: var(--postBg);
+  border-radius: var(--borderRad);
 }
 h1 {
-  font-family: var(--title-font);
+  font-size: 2em;
+  text-align: center;
+  padding: 2em 0;
+  margin: 1em 0;
+}
+.postContainer {
+  padding: 1em;
+  margin-bottom: 2em;
+}
+h2 {
+  font-size: 1.6em;
+  font-style: italic;
+}
+.postInfo {
+  font-size: 0.6em;
+  display: block;
+  padding: 0.6em 0 0.4em;
+  border-bottom: 1px solid var(--bgAccent);
+}
+.postContainer p {
+  padding: 1em 0;
+}
+.songInfo {
+  font-size: 0.6em;
 }

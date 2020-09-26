@@ -47,7 +47,7 @@ class App extends Component {
     console.log(this.state);
     return (
       <div className="App">
-        <h1>fresh vibes</h1>
+        <h1 className="block">fresh vibes</h1>
         {this.state.posts.map(el => {
           const { description, header, songList } = el.content;
           return (
