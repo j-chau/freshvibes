@@ -5,7 +5,9 @@
   /* COLOURS */
   --bgColour: #f5f1ea;
   --bgAccent: #d0c9be;
-  --postBg: #97a2a7;
+  --postBorder: #97a2a7;
+  --hColour: #8c9086;
+  --fontColour: #666973;
 
   /* STYLING */
   --borderRad: 10px;
@@ -18,7 +20,7 @@ body {
   font-size: 2rem;
   font-family: var(--bodyFont);
   font-weight: 300;
-  color: var(--bgColour);
+  color: var(--fontColour);
   background-color: var(--bgColour);
   /* background-image: 
     repeating-linear-gradient(90deg,
@@ -29,6 +31,7 @@ body {
 } 
 h1,h2 {
   font-family: var(--titleFont);
+  color: var(--hColour);
 }
 .App {
   width: 90%;
@@ -36,7 +39,7 @@ h1,h2 {
   margin:  auto;
 }
 .block {
-  background-color: var(--postBg);
+  border: 1px solid var(--postBorder);
   border-radius: var(--borderRad);
 }
 h1 {
