@@ -24,7 +24,13 @@ class NewForm extends Component {
             addSongList.push(
                 <Fragment key={i}>
                     <label className="srOnly" htmlFor="inputEmbed">Song Embed Code</label>
-                    <input type="text" id="inputEmbed" placeholder="Song Embed Code" required />
+                    <input type="text"
+                        id="inputEmbed"
+                        value={this.state.userInput.songList[i]}
+                        name="songList"
+                        onChange={this.handleChange}
+                        placeholder="Song Embed Code"
+                        required />
                 </Fragment>
             )
         }
@@ -33,7 +39,9 @@ class NewForm extends Component {
 
     handleChange = (e) => {
         const copyState = { ...this.state.userInput };
-        copyState[e.target.name] = e.target.value;
+        const { name, value } = e.target;
+        if (name === "songList") copyState.songList[this.state.numSongs - 1] = value;
+        else copyState[name] = value;
         this.setState({
             userInput: copyState
         })
