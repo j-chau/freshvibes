@@ -69,12 +69,15 @@ form > *:not(div), .impBtn {
   padding: 0.6em 1em;
   margin-bottom: 0.8em;
 }
+form> *:not(div):focus {
+  outline-offset: -5px;
+}
 form input:first-of-type {
   font-size: 1.6em;
 }
 input::placeholder,
 textarea::placeholder {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 textarea {
   resize: none;
@@ -86,6 +89,9 @@ textarea {
 }
 form > div:last-child {
   text-align: right;
+}
+.btnContainer {
+  padding-bottom: 2em;
 }
 div > button {
   padding-right: 2em;
