@@ -40,6 +40,7 @@ class NewForm extends Component {
     handleChange = (e) => {
         const copyState = { ...this.state.userInput };
         const { name, value } = e.target;
+        // TODO: try using prevState to avoid Warning
         if (name === "songList") copyState.songList[this.state.numSongs - 1] = value;
         else copyState[name] = value;
         this.setState({
@@ -96,7 +97,7 @@ class NewForm extends Component {
                     <button onClick={this.handleAdd} className="impBtn">add new song</button>
                 </div>
                 <div>
-                    <button onClick={this.handleDelete}>delete</button>
+                    <button onClick={this.props.action}>delete</button>
                     <button onClick={this.handleSubmit} className="impBtn">post</button>
                 </div>
             </form>
