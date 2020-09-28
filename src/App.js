@@ -46,21 +46,14 @@ class App extends Component {
     })
   }
 
-  handleClick = () => {
-    // console.log("clicked");
-    this.setState({
-      showNew: true
-    })
-  }
-
   render() {
     // console.log(this.state);
     return (
       <div className="App">
         <h1 className="block">fresh vibes</h1>
         {!this.state.showNew
-          ? <button className="block newBtn" onClick={this.handleClick}>+ New</button>
-          : <NewForm />}
+          ? <button className="block newBtn" onClick={() => this.setState({ showNew: true })}>+ New</button>
+          : <NewForm action={() => this.setState({ showNew: false })} />}
         {this.state.posts.map(el => {
           const { description, header, songList } = el.content;
           return (
