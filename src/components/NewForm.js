@@ -8,7 +8,13 @@ class NewForm extends Component {
     constructor() {
         super();
         this.state = {
-            numSongs: 1
+            numSongs: 1,
+            userInput: {
+                title: '',
+                author: '',
+                descript: '',
+                songList: []
+            }
         }
     }
 
@@ -25,6 +31,14 @@ class NewForm extends Component {
         return addSongList;
     }
 
+    handleChange = (e) => {
+        const copyState = { ...this.state.userInput };
+        copyState[e.target.name] = e.target.value;
+        this.setState({
+            userInput: copyState
+        })
+    }
+
     handleClick = (e) => {
         e.preventDefault();
         if (this.state.numSongs < 3) {
@@ -39,16 +53,35 @@ class NewForm extends Component {
 
     render() {
         console.log("rendered");
+        const { title, author, descript, songList } = this.state.userInput;
         return (
             <form className="block newBtn">
                 <label className="srOnly" htmlFor="inputTitle">Post Title</label>
-                <input type="text" id="postTitle" placeholder="Post Title" required />
+                <input type="text"
+                    id="postTitle"
+                    value={title}
+                    name="title"
+                    onChange={this.handleChange}
+                    placeholder="Post Title"
+                    required />
 
                 <label className="srOnly" htmlFor="inputAuthor">Your Name</label>
-                <input type="text" id="inputAuthor" placeholder="Author Name" required />
+                <input type="text"
+                    id="inputAuthor"
+                    value={author}
+                    name="author"
+                    onChange={this.handleChange}
+                    placeholder="Author Name"
+                    required />
 
                 <label className="srOnly" htmlFor="inputDescrip">Description</label>
-                <textarea id="inputDescrip" rows="7" maxLength="500" placeholder="add a description about your song or album selection. let others konw what kind of mood to expect." required></textarea>
+                <textarea rows="7" maxLength="500"
+                    id="inputDescrip"
+                    value={descript}
+                    name="descript"
+                    onChange={this.handleChange}
+                    placeholder="add a description about your song or album selection. let others konw what kind of mood to expect."
+                    required></textarea>
 
                 {this.addSongs()}
 
