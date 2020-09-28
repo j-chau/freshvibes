@@ -47,21 +47,20 @@ class NewForm extends Component {
         })
     }
 
-    handleClick = (e) => {
+    handleAdd = (e) => {
         e.preventDefault();
         if (this.state.numSongs < 3) {
-            console.log("true");
             const newCount = this.state.numSongs + 1;
             this.setState({
                 numSongs: newCount
             })
+            // TODO: add error message
         } else console.log("false");
-        console.log("handleClick triggered => this.state.numSongs: " + this.state.numSongs);
     }
 
     render() {
         console.log("rendered");
-        const { title, author, descript, songList } = this.state.userInput;
+        const { title, author, descript } = this.state.userInput;
         return (
             <form className="block newBtn">
                 <label className="srOnly" htmlFor="inputTitle">Post Title</label>
@@ -94,7 +93,7 @@ class NewForm extends Component {
                 {this.addSongs()}
 
                 <div className="btnContainer">
-                    <button onClick={this.handleClick} className="impBtn">add new song</button>
+                    <button onClick={this.handleAdd} className="impBtn">add new song</button>
                 </div>
                 <div>
                     <button onClick={this.handleDelete}>delete</button>
