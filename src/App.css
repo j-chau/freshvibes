@@ -49,9 +49,46 @@ h1 {
   padding: 2em 0;
   margin: 1em 0;
 }
-.postContainer {
+.postContainer, .newBtn {
   padding: 1em;
   margin-bottom: 2em;
+}
+.newBtn {
+  display: block;
+  text-transform: lowercase;
+  width: 100%;
+}
+form {
+  background-color: var(--bgAccent);
+  border: none !important;
+}
+form > *:not(div), .impBtn {
+  width: 100%;
+  border: 1px dashed var(--bgColour);
+  border-radius: var(--borderRad);
+  padding: 0.6em 1em;
+  margin-bottom: 0.8em;
+}
+form input:first-of-type {
+  font-size: 1.6em;
+}
+input::placeholder,
+textarea::placeholder {
+  opacity: 0.5;
+}
+textarea {
+  resize: none;
+}
+.impBtn {
+  width: 175px;
+  border: none;
+  background-color: var(--bgColour);
+}
+form > div:last-child {
+  text-align: right;
+}
+div > button {
+  padding-right: 2em;
 }
 h2 {
   font-size: 1.6em;

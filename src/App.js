@@ -4,9 +4,11 @@ import firebase from './firebase.js';
 import Post from './components/Posts.js';
 
 import './App.css';
+import NewForm from './components/NewForm.js';
 
 // click for new post:
-//  o new post form expands from button -> form component
+//  x new post form expands from button -> form component
+//    o add transitions
 //  o onClick newButton trigger function to intake user data
 //  o Unsplash API call made when title loses focus after text input
 //  o use 'novalidate' and 'required' to set required fields with custom error messages
@@ -20,7 +22,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      posts: []
+      posts: [],
+      showNew: false
     }
   }
 
@@ -43,11 +46,21 @@ class App extends Component {
     })
   }
 
+  handleClick = () => {
+    // console.log("clicked");
+    this.setState({
+      showNew: true
+    })
+  }
+
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div className="App">
         <h1 className="block">fresh vibes</h1>
+        {!this.state.showNew
+          ? <button className="block newBtn" onClick={this.handleClick}>+ New</button>
+          : <NewForm />}
         {this.state.posts.map(el => {
           const { description, header, songList } = el.content;
           return (
