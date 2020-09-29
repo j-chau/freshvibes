@@ -25,3 +25,6 @@ input, textarea, button {
   color: inherit;
   border: none;
 }
+img {
+  width: 100%;
+}

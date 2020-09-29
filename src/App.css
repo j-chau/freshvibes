@@ -74,10 +74,25 @@ form> *:not(div):focus {
 }
 form input:first-of-type {
   font-size: 1.6em;
+  padding: 0.375em 0.625em;
+  margin-bottom: 0.5em;
 }
 input::placeholder,
 textarea::placeholder {
   opacity: 0.7;
+}
+.bannerImg {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+  margin-bottom: 0.8em;
+  border-radius: var(--borderRad);
+}
+.bannerImg img{
+  position: absolute;
+  top: -10%;
+  left: 0;
+  opacity: 0.6;
 }
 textarea {
   resize: none;
@@ -93,8 +108,8 @@ form > div:last-child {
 .btnContainer {
   padding-bottom: 2em;
 }
-div > button {
-  padding-right: 2em;
+.delBtn {
+  margin: 0 2em;
 }
 h2 {
   font-size: 1.6em;

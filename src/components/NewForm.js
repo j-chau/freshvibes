@@ -125,6 +125,10 @@ class NewForm extends Component {
                     placeholder="Author Name"
                     required />
 
+                <div className="bannerImg">
+                    <img src="http://placeimg.com/640/640/any" alt="" />
+                </div>
+
                 <label className="srOnly" htmlFor="inputDescrip">Description</label>
                 <textarea rows="7" maxLength="500"
                     id="inputDescrip"
@@ -140,7 +144,7 @@ class NewForm extends Component {
                     <button onClick={this.handleAdd} className="impBtn">add new song</button>
                 </div>
                 <div>
-                    <button onClick={this.props.action}>delete</button>
+                    <button onClick={this.props.action} className="delBtn">delete</button>
                     <button onClick={() => this.handleSubmit(this.props)} className="impBtn">post</button>
                 </div>
             </form>
