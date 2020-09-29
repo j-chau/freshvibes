@@ -9,11 +9,11 @@ import NewForm from './components/NewForm.js';
 // click for new post:
 //  x new post form expands from button -> form component
 //    o add transitions
-//  o onClick newButton trigger function to intake user data
+//  x onClick newButton trigger function to intake user data
 //  o Unsplash API call made when title loses focus after text input
 //  o use 'novalidate' and 'required' to set required fields with custom error messages
-//  o onClick delete: clear form and close form
-//  o onClick post: add date and time to data, push user data to firebase
+//  x onClick delete: clear form and close form
+//  x onClick post: add date and time to data, push user data to firebase
 // likeCounter: increment on click, push value to firebase
 
 
@@ -32,18 +32,16 @@ class App extends Component {
     dbRef.on("value", res => {
       const newState = [];
       const data = res.val();
-      data.forEach(el => {
-        for (let i in el) {
-          newState.push({
-            key: i,
-            content: el[i]
-          })
-        }
-      });
+      for (let el in data) {
+        newState.push({
+          key: el,
+          content: data[el]
+        })
+      }
       this.setState({
         posts: newState
       })
-    })
+    });
   }
 
   render() {
