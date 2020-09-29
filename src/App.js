@@ -44,6 +44,51 @@ class App extends Component {
     });
   }
 
+  savePost = (userInput) => {
+    const { title, author, descript, songList } = userInput;
+    const currentDate = new Date();
+    const publishDate = `${currentDate.getFullYear()}-${("0" + (currentDate.getMonth() + 1)).slice(-2)}-${("0" + currentDate.getDate()).slice(-2)}`
+    let firebaseArr = {
+      header: {
+        author,
+        title,
+        publishInfo: publishDate
+      },
+      description: descript,
+      songList: []
+    }
+
+    const copySongList = [...songList];
+    for (let i = 0; i < copySongList.length; i++) {
+      const el = copySongList[i]
+
+      // get album id
+      const albumIdStart = el.indexOf("album") + "album".length + 1;
+      const albumIdEnd = el.indexOf("/", albumIdStart);
+      const albumId = el.slice(albumIdStart, albumIdEnd);
+
+      // get artist link
+      const linkStart = el.indexOf("<a href") + "<a href".length + 2;
+      const linkEnd = el.indexOf("\">", linkStart);
+      const artistLink = el.slice(linkStart, linkEnd);
+
+      // get artist credit
+      const creditEnd = el.indexOf("</a>", linkEnd);
+      const artistCredit = el.slice(linkEnd + 2, creditEnd);
+
+      firebaseArr.songList.push({
+        credit: artistCredit,
+        embedId: albumId,
+        embedLink: artistLink
+      })
+    }
+    const dbRef = firebase.database().ref();
+    dbRef.push(firebaseArr);
+    this.setState({
+      showNew: false
+    })
+  }
+
   render() {
     // console.log(this.state);
     return (
@@ -51,7 +96,10 @@ class App extends Component {
         <h1 className="block">fresh vibes</h1>
         {!this.state.showNew
           ? <button className="block newBtn" onClick={() => this.setState({ showNew: true })}>+ New</button>
-          : <NewForm action={() => this.setState({ showNew: false })} />}
+          : <NewForm
+            closeForm={() => this.setState({ showNew: false })}
+            handleSubmit={this.savePost}
+          />}
         {this.state.posts.map(el => {
           const { description, header, songList } = el.content;
           return (
