@@ -33,7 +33,7 @@ class App extends Component {
       const newState = [];
       const data = res.val();
       for (let el in data) {
-        newState.push({
+        newState.unshift({
           key: el,
           content: data[el]
         })
