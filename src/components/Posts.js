@@ -1,9 +1,13 @@
 import React from 'react';
+import HeartCounter from './HeartCounter';
 
-const Post = ({ header, description, songList }) => {
+const Post = ({ header, description, songList, id }) => {
     return (
         <div className="block postContainer">
-            <h2>{header.title}</h2>
+            <div className="postHeader">
+                <h2>{header.title}</h2>
+                <HeartCounter id={id} count={header.hearts} />
+            </div>
             <span className="postInfo">by {header.author} on {header.publishInfo}</span>
             <p>{description}</p>
             <ul>

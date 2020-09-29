@@ -14,7 +14,10 @@ import NewForm from './components/NewForm.js';
 //  o use 'novalidate' and 'required' to set required fields with custom error messages
 //  x onClick delete: clear form and close form
 //  x onClick post: add date and time to data, push user data to firebase
-// likeCounter: increment on click, push value to firebase
+// likeCounter: 
+//  x increment on click
+//  x push value to firebase
+//  o use localStorage to lock one like per user
 
 
 
@@ -52,7 +55,8 @@ class App extends Component {
       header: {
         author,
         title,
-        publishInfo: publishDate
+        publishInfo: publishDate,
+        hearts: 0
       },
       description: descript,
       songList: []
@@ -105,6 +109,7 @@ class App extends Component {
           return (
             <Post
               key={el.key}
+              id={el.key}
               header={header}
               description={description}
               songList={songList}

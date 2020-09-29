@@ -111,9 +111,25 @@ form > div:last-child {
 .delBtn {
   margin: 0 2em;
 }
+.postHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 h2 {
   font-size: 1.6em;
   font-style: italic;
+}
+.heartContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.heartContainer p.counterDisplay {
+  padding: 0 0.4em 0.2em;
+}
+.fa-heart:hover {
+  cursor: pointer;
 }
 .postInfo {
   font-size: 0.6em;
