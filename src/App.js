@@ -17,7 +17,7 @@ import NewForm from './components/NewForm.js';
 // likeCounter: 
 //  x increment on click
 //  x push value to firebase
-//  o use localStorage to lock one like per user
+//  x use localStorage to lock one like per user
 
 
 

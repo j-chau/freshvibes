@@ -8,6 +8,7 @@
   --postBorder: #97a2a7;
   --hColour: #8c9086;
   --fontColour: #666973;
+  --hearts: #d0c9be;
 
   /* STYLING */
   --borderRad: 10px;
@@ -128,8 +129,14 @@ h2 {
 .heartContainer p.counterDisplay {
   padding: 0 0.4em 0.2em;
 }
+.fa-heart {
+  color: var(--hearts);
+}
 .fa-heart:hover {
   cursor: pointer;
+}
+.oldHeart {
+  color: #973f3f;
 }
 .postInfo {
   font-size: 0.6em;
