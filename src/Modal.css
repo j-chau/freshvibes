@@ -1,0 +1,39 @@
+.modalBg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.7;
+    z-index: 4;
+}
+.modalContainer {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 90%;
+    max-width: 600px;
+    height: 600px;
+    transform: translate(-50%,-50%);
+    background-color: var(--bgAccent);
+    border-radius: var(--borderRad);
+    text-align: right;
+    z-index: 5;
+}
+.unsplashImgs {
+    border: 1px solid var(--bgColour);
+    border-radius: var(--borderRad);
+    max-height: 240px;
+    padding: 0.4em;
+    overflow-y: hidden;
+}
+.unsplashInner {
+    height: 220px;
+    padding-right: 0.4em;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 10px;
+}
