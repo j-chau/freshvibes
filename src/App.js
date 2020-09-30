@@ -6,13 +6,12 @@ import firebase from './firebase.js';
 
 import Post from './components/Posts.js';
 import NewForm from './components/NewForm.js';
-import Modal from './components/Modal.js';
 
 // click for new post:
 //  x new post form expands from button -> form component
 //    o add transitions
 //  x onClick newButton trigger function to intake user data
-//  o Unsplash API call made when title loses focus after text input
+//  x Unsplash API call made when title loses focus after text input
 //  o use 'novalidate' and 'required' to set required fields with custom error messages
 //  x onClick delete: clear form and close form
 //  x onClick post: add date and time to data, push user data to firebase
@@ -50,7 +49,7 @@ class App extends Component {
   }
 
   savePost = (userInput) => {
-    const { title, author, descript, songList } = userInput;
+    const { title, author, descript, songList, banner } = userInput;
     const currentDate = new Date();
     const publishDate = `${currentDate.getFullYear()}-${("0" + (currentDate.getMonth() + 1)).slice(-2)}-${("0" + currentDate.getDate()).slice(-2)}`
     let firebaseArr = {
@@ -61,7 +60,8 @@ class App extends Component {
         hearts: 0
       },
       description: descript,
-      songList: []
+      songList: [],
+      banner
     }
 
     const copySongList = [...songList];
@@ -106,7 +106,7 @@ class App extends Component {
             handleSubmit={this.savePost}
           />}
         {this.state.posts.map(el => {
-          const { description, header, songList } = el.content;
+          const { header, description, songList, banner } = el.content;
           return (
             <Post
               key={el.key}
@@ -114,6 +114,7 @@ class App extends Component {
               header={header}
               description={description}
               songList={songList}
+              banner={banner}
             />
           )
         })}

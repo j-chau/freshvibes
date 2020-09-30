@@ -8,7 +8,12 @@ class Modal extends Component {
         this.state = {
             searchTerm: '',
             searchArr: [],
-            APIKey: "UTVmOX5KTgYoWwFFdjDBBDvIbovGexTDgITSGWjrC3c"
+            APIKey: "UTVmOX5KTgYoWwFFdjDBBDvIbovGexTDgITSGWjrC3c",
+            selectImg: {
+                imgUrl: '',
+                altText: '',
+                photographer: '',
+            }
         }
     }
 
@@ -19,7 +24,7 @@ class Modal extends Component {
         clearTimeout(this.timer);
         this.timer = setTimeout(() => {
             this.doSearch();
-        }, 2000)
+        }, 1500)
 
     }
     doSearch() {
@@ -40,10 +45,20 @@ class Modal extends Component {
         })
     }
 
+    selectImg = ({ urls, alt_description, user }) => {
+        this.setState({
+            selectImg: {
+                imgUrl: urls.regular,
+                altText: alt_description,
+                photographer: user.username
+            }
+        })
+    }
+
     render() {
         return (
             <div className="modalContainer newBtn">
-                <form>
+                <form className="modalForm">
                     <label htmlFor="searchText" className="srOnly">Search image</label>
                     <input type="text"
                         id="searchText"
@@ -61,15 +76,18 @@ class Modal extends Component {
                                         src={el.urls.thumb}
                                         alt={el.alt_description}
                                         className="imgThumbs"
+                                        onClick={() => this.selectImg(el)}
                                     />
                                 )
                             })}
                         </div>
                     </div>
 
-                    <div className="selectImg bannerImg"></div>
+                    <div className="selectImg bannerImg">
+                        <img src={this.state.selectImg.imgUrl} alt={this.state.selectImg.altText} />
+                    </div>
 
-                    <button className="impBtn">select</button>
+                    <button className="impBtn" onClick={(e) => this.props.handleSelect(e, this.state.selectImg)}>select</button>
                 </form>
             </div>
         )

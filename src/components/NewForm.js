@@ -15,7 +15,8 @@ class NewForm extends Component {
                 title: '',
                 author: '',
                 descript: '',
-                songList: []
+                songList: [],
+                banner: {}
             }
         }
     }
@@ -39,6 +40,16 @@ class NewForm extends Component {
         return addSongList;
     }
 
+    addImg = (e, selectImg) => {
+        e.preventDefault();
+        const copyState = { ...this.state.userInput };
+        copyState.banner = { ...selectImg }
+        this.setState({
+            userInput: copyState,
+            showImg: false
+        })
+    }
+
     handleChange = (e) => {
         const copyState = { ...this.state.userInput };
         const { name, value } = e.target;
@@ -51,6 +62,7 @@ class NewForm extends Component {
     }
 
     handleAdd = (e) => {
+        // TODO: preventDefault not working?
         e.preventDefault();
         if (this.state.numSongs < 3) {
             const newCount = this.state.numSongs + 1;
@@ -62,7 +74,7 @@ class NewForm extends Component {
     }
 
     render() {
-        const { title, author, descript } = this.state.userInput;
+        const { title, author, descript, banner } = this.state.userInput;
         return (
             <>
                 {this.state.showImg && (
@@ -71,48 +83,52 @@ class NewForm extends Component {
                         <Modal handleSelect={this.addImg} />
                     </>
                 )}
-            <form className="block newBtn">
-                <label className="srOnly" htmlFor="inputTitle">Post Title</label>
-                <input type="text"
-                    id="postTitle"
-                    value={title}
-                    name="title"
-                    onChange={this.handleChange}
-                    placeholder="Post Title"
-                    required />
+                <form className="block newBtn">
+                    <label className="srOnly" htmlFor="inputTitle">Post Title</label>
+                    <input type="text"
+                        id="postTitle"
+                        value={title}
+                        name="title"
+                        onChange={this.handleChange}
+                        placeholder="Post Title"
+                        required />
 
-                <label className="srOnly" htmlFor="inputAuthor">Your Name</label>
-                <input type="text"
-                    id="inputAuthor"
-                    value={author}
-                    name="author"
-                    onChange={this.handleChange}
-                    placeholder="Author Name"
-                    required />
+                    <label className="srOnly" htmlFor="inputAuthor">Your Name</label>
+                    <input type="text"
+                        id="inputAuthor"
+                        value={author}
+                        name="author"
+                        onChange={this.handleChange}
+                        placeholder="Author Name"
+                        required />
 
-                <div className="bannerImg noImg" onClick={this.props.showModal} tabIndex={0}>
-                    <p>Click to select an image</p>
-                </div>
+                    <div className="bannerImg noImg" onClick={() => this.setState({ showImg: true })} tabIndex={0}>
+                        {Object.keys(banner).length > 0
+                            ? <img src={banner.imgUrl} alt={banner.altText} />
+                            : <p>Click to select an image</p>
+                        }
+                    </div>
 
-                <label className="srOnly" htmlFor="inputDescrip">Description</label>
-                <textarea rows="7" maxLength="500"
-                    id="inputDescrip"
-                    value={descript}
-                    name="descript"
-                    onChange={this.handleChange}
-                    placeholder="add a description about your song or album selection. let others konw what kind of mood to expect."
-                    required></textarea>
+                    <label className="srOnly" htmlFor="inputDescrip">Description</label>
+                    <textarea rows="7" maxLength="500"
+                        id="inputDescrip"
+                        value={descript}
+                        name="descript"
+                        onChange={this.handleChange}
+                        placeholder="add a description about your song or album selection. let others konw what kind of mood to expect."
+                        required></textarea>
 
-                {this.addSongs()}
+                    {this.addSongs()}
 
-                <div className="btnContainer">
-                    <button onClick={this.handleAdd} className="impBtn">add new song</button>
-                </div>
-                <div>
-                    <button onClick={this.props.closeForm} className="delBtn">delete</button>
-                    <button onClick={() => this.props.handleSubmit(this.state.userInput)} className="impBtn">post</button>
-                </div>
-            </form>
+                    <div className="btnContainer">
+                        <button onClick={this.handleAdd} className="impBtn">add new song</button>
+                    </div>
+                    <div>
+                        <button onClick={this.props.closeForm} className="delBtn">delete</button>
+                        <button onClick={() => this.props.handleSubmit(this.state.userInput)} className="impBtn">post</button>
+                    </div>
+                </form>
+            </>
         )
     }
 }

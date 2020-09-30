@@ -12,13 +12,13 @@
     position: fixed;
     left: 50%;
     top: 50%;
+    transform: translate(-50%,-50%);
     width: 90%;
     max-width: 600px;
-    height: 600px;
-    transform: translate(-50%,-50%);
     background-color: var(--bgAccent);
     border-radius: var(--borderRad);
     text-align: right;
+    padding-bottom: 0;
     z-index: 5;
 }
 .unsplashImgs {
@@ -26,6 +26,7 @@
     border-radius: var(--borderRad);
     max-height: 240px;
     padding: 0.4em;
+    margin-bottom: 1.4em;
     overflow-y: hidden;
 }
 .unsplashInner {
@@ -36,4 +37,10 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     gap: 10px;
+}
+.unsplashInner img:hover {
+    cursor: pointer;
+}
+.modalForm .selectImg {
+    margin-bottom: 1.4em;
 }
