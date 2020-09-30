@@ -81,8 +81,8 @@ class NewForm extends Component {
                     placeholder="Author Name"
                     required />
 
-                <div className="bannerImg">
-                    <img src="http://placeimg.com/640/640/any" alt="" />
+                <div className="bannerImg noImg" onClick={this.props.showModal} tabIndex={0}>
+                    <p>Click to select an image</p>
                 </div>
 
                 <label className="srOnly" htmlFor="inputDescrip">Description</label>

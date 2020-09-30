@@ -1,10 +1,12 @@
+import './App.css';
+import './Modal.css'
+
 import React, { Component } from 'react';
 import firebase from './firebase.js';
 
 import Post from './components/Posts.js';
-
-import './App.css';
 import NewForm from './components/NewForm.js';
+import Modal from './components/Modal.js';
 
 // click for new post:
 //  x new post form expands from button -> form component
@@ -26,7 +28,8 @@ class App extends Component {
     super();
     this.state = {
       posts: [],
-      showNew: false
+      showNew: true,
+      showImg: false
     }
   }
 
@@ -94,14 +97,20 @@ class App extends Component {
   }
 
   render() {
-    // console.log(this.state);
     return (
       <div className="App">
-        <h1 className="block">fresh vibes</h1>
+        {this.state.showImg && (
+          <>
+            <div className="modalBg"></div>
+            <Modal />
+          </>
+        )}
+        < h1 className="block">fresh vibes</h1>
         {!this.state.showNew
           ? <button className="block newBtn" onClick={() => this.setState({ showNew: true })}>+ New</button>
           : <NewForm
             closeForm={() => this.setState({ showNew: false })}
+            showModal={() => this.setState({ showImg: true })}
             handleSubmit={this.savePost}
           />}
         {this.state.posts.map(el => {
