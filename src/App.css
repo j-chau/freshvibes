@@ -190,9 +190,25 @@ textarea {
 form > div:last-child {
   text-align: right;
 }
+.addSongBtn {
+  margin-bottom: 2em;
+}
 .btnContainer {
-  padding-bottom: 2em;
+  position: relative;
 }
 .delBtn {
   margin: 0 2em;
+}
+.errMsg {
+  position: absolute;
+  display: none;
+  top: -2.6em;
+  right: 0;
+  background-color: var(--bgColour);
+  border-radius: var(--borderRad);
+  padding: 0.4em 0.5em;
+}
+.show {
+  display: block;
+  opacity: 1;
 }

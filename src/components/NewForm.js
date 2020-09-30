@@ -1,10 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Modal from './Modal.js'
 
-// on submit, only grab album id
-// pick bg colour and link colour
-
-
 class NewForm extends Component {
     constructor() {
         super();
@@ -17,7 +13,8 @@ class NewForm extends Component {
                 descript: '',
                 songList: [],
                 banner: {}
-            }
+            },
+            error: false
         }
     }
 
@@ -73,6 +70,22 @@ class NewForm extends Component {
         } else console.log("false");
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const copyStateValues = Object.values({ ...this.state.userInput });
+        const errCheck = copyStateValues.filter(el => {
+            let check = el;
+            if (el.length === undefined) check = Object.values(el);
+            return check.length > 0
+        });
+        if (errCheck.length !== 5) this.setState({ error: true });
+        else {
+            console.log("completed form");
+            this.setState({ numSongs: 1 });
+            this.props.handleSubmit(this.state.userInput);
+        }
+    }
+
     render() {
         const { title, author, descript, banner } = this.state.userInput;
         return (
@@ -120,12 +133,13 @@ class NewForm extends Component {
 
                     {this.addSongs()}
 
-                    <div className="btnContainer">
-                        <button onClick={this.handleAdd} className="impBtn">add new song</button>
-                    </div>
                     <div>
+                        <button onClick={this.handleAdd} className="impBtn addSongBtn">add new song</button>
+                    </div>
+                    <div className="btnContainer">
                         <button onClick={this.props.closeForm} className="delBtn">delete</button>
-                        <button onClick={() => this.props.handleSubmit(this.state.userInput)} className="impBtn">post</button>
+                        <button type="submit" onClick={this.handleSubmit} className="impBtn">post</button>
+                        <p className={"errMsg" + (!this.state.error ? "" : " show")}>all fields are required</p>
                     </div>
                 </form>
             </>
