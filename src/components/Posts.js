@@ -13,8 +13,8 @@ const Post = ({ header, description, songList, banner, id }) => {
                 <img src={banner.imgUrl} alt={banner.altText} />
             </div>
             <p className="imgCredit">
-                Photo by <a href={"https://unsplash.com/@" + banner.photographer + "?utm_source=fresh_vibes&utm_medium=referral"} target="_blank">{banner.photographer}</a>
-                &nbsp;on <a href="https://unsplash.com/?utm_source=fresh_vibes&utm_medium=referral" target="_blank">Unsplash</a></p>
+                Photo by <a href={"https://unsplash.com/@" + banner.photographer + "?utm_source=fresh_vibes&utm_medium=referral"} target="_blank" rel="noopener noreferrer">{banner.photographer}</a>
+                &nbsp;on <a href="https://unsplash.com/?utm_source=fresh_vibes&utm_medium=referral" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
             <p>{description}</p>
             <ul>
                 {songList.map((el, index) => {
