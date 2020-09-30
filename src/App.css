@@ -83,17 +83,32 @@ textarea::placeholder {
   opacity: 0.7;
 }
 .bannerImg {
+  width: 90%;
   position: relative;
   overflow: hidden;
-  padding-top: 56.25%;
-  margin-bottom: 0.8em;
+  padding-top: 35.25%;
+  margin: 1.6em auto 0.8em;
   border-radius: var(--borderRad);
+}
+form .bannerImg {
+  margin: 0 auto 0.8em;
+}
+.noImg {
+  border: 1px dashed var(--bgColour);
+  cursor: pointer;
+}
+.noImg p {
+  position: absolute;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-10%);
+  opacity: 0.7;
 }
 .bannerImg img{
   position: absolute;
-  top: -10%;
+  top: -25%;
   left: 0;
-  opacity: 0.6;
 }
 textarea {
   resize: none;

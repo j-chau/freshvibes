@@ -27,4 +27,5 @@ input, textarea, button {
 }
 img {
   width: 100%;
+  filter: grayscale(50%) sepia(0.35);
 }
