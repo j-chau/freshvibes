@@ -1,7 +1,7 @@
 import React from 'react';
 import HeartCounter from './HeartCounter';
 
-const Post = ({ header, description, songList, id }) => {
+const Post = ({ header, description, songList, banner, id }) => {
     return (
         <div className="block postContainer">
             <div className="postHeader">
@@ -9,6 +9,12 @@ const Post = ({ header, description, songList, id }) => {
                 <HeartCounter id={id} count={header.hearts} />
             </div>
             <span className="postInfo">by {header.author} on {header.publishInfo}</span>
+            <div className="bannerImg">
+                <img src={banner.imgUrl} alt={banner.altText} />
+            </div>
+            <p className="imgCredit">
+                Photo by <a href={"https://unsplash.com/@" + banner.photographer + "?utm_source=fresh_vibes&utm_medium=referral"} target="_blank">{banner.photographer}</a>
+                &nbsp;on <a href="https://unsplash.com/?utm_source=fresh_vibes&utm_medium=referral" target="_blank">Unsplash</a></p>
             <p>{description}</p>
             <ul>
                 {songList.map((el, index) => {

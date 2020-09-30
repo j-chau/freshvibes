@@ -27,7 +27,7 @@ class App extends Component {
     super();
     this.state = {
       posts: [],
-      showNew: true,
+      showNew: false,
     }
   }
 

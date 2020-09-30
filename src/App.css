@@ -35,6 +35,24 @@ h1,h2 {
   font-family: var(--titleFont);
   color: var(--hColour);
 }
+a {
+  position: relative;
+  padding: 0.2em 0;
+}
+a::before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 4%;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px dotted var(--fontColour);
+  opacity: 0.5;
+}
+a:hover::before,
+a:focus::before {
+  width: 0;
+}
 .App {
   width: 90%;
   max-width: 768px;
@@ -152,6 +170,12 @@ h2 {
 }
 .oldHeart {
   color: #973f3f;
+}
+.imgCredit {
+  font-size: 0.5em;
+  font-style: italic;
+  text-align: center;
+  margin-top: -1.6em;
 }
 .postInfo {
   font-size: 0.6em;
