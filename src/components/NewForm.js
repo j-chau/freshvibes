@@ -59,15 +59,13 @@ class NewForm extends Component {
     }
 
     handleAdd = (e) => {
-        // TODO: preventDefault not working?
         e.preventDefault();
         if (this.state.numSongs < 3) {
             const newCount = this.state.numSongs + 1;
             this.setState({
                 numSongs: newCount
             })
-            // TODO: add error message
-        } else console.log("false");
+        }
     }
 
     handleSubmit = (e) => {
@@ -88,6 +86,7 @@ class NewForm extends Component {
 
     render() {
         const { title, author, descript, banner } = this.state.userInput;
+        const offBtn = this.state.numSongs < 3 ? false : true;
         return (
             <>
                 {this.state.showImg && (
@@ -134,7 +133,8 @@ class NewForm extends Component {
                     {this.addSongs()}
 
                     <div>
-                        <button onClick={this.handleAdd} className="impBtn addSongBtn">add new song</button>
+                        <button
+                            onClick={this.handleAdd} className="impBtn addSongBtn" disabled={offBtn} aria-disabled={offBtn}>add new song</button>
                     </div>
                     <div className="btnContainer">
                         <button onClick={this.props.closeForm} className="delBtn">delete</button>
