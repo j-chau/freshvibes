@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import Modal from './Modal.js'
 
 // on submit, only grab album id
 // pick bg colour and link colour
@@ -9,6 +10,7 @@ class NewForm extends Component {
         super();
         this.state = {
             numSongs: 1,
+            showImg: false,
             userInput: {
                 title: '',
                 author: '',
@@ -62,6 +64,13 @@ class NewForm extends Component {
     render() {
         const { title, author, descript } = this.state.userInput;
         return (
+            <>
+                {this.state.showImg && (
+                    <>
+                        <div className="modalBg"></div>
+                        <Modal handleSelect={this.addImg} />
+                    </>
+                )}
             <form className="block newBtn">
                 <label className="srOnly" htmlFor="inputTitle">Post Title</label>
                 <input type="text"

@@ -29,7 +29,6 @@ class App extends Component {
     this.state = {
       posts: [],
       showNew: true,
-      showImg: false
     }
   }
 
@@ -99,18 +98,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.showImg && (
-          <>
-            <div className="modalBg"></div>
-            <Modal />
-          </>
-        )}
         < h1 className="block">fresh vibes</h1>
         {!this.state.showNew
           ? <button className="block newBtn" onClick={() => this.setState({ showNew: true })}>+ New</button>
           : <NewForm
             closeForm={() => this.setState({ showNew: false })}
-            showModal={() => this.setState({ showImg: true })}
             handleSubmit={this.savePost}
           />}
         {this.state.posts.map(el => {
