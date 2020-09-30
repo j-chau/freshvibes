@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/joeyChauProjectFive/static/css/main.e7dc27b8.chunk.css",
+    "main.js": "/joeyChauProjectFive/static/js/main.01377f90.chunk.js",
+    "main.js.map": "/joeyChauProjectFive/static/js/main.01377f90.chunk.js.map",
+    "runtime-main.js": "/joeyChauProjectFive/static/js/runtime-main.4cd48c2a.js",
+    "runtime-main.js.map": "/joeyChauProjectFive/static/js/runtime-main.4cd48c2a.js.map",
+    "static/js/2.ad601185.chunk.js": "/joeyChauProjectFive/static/js/2.ad601185.chunk.js",
+    "static/js/2.ad601185.chunk.js.map": "/joeyChauProjectFive/static/js/2.ad601185.chunk.js.map",
+    "index.html": "/joeyChauProjectFive/index.html",
+    "precache-manifest.debde7b2a8e833baf50f3a88fdf05c7a.js": "/joeyChauProjectFive/precache-manifest.debde7b2a8e833baf50f3a88fdf05c7a.js",
+    "service-worker.js": "/joeyChauProjectFive/service-worker.js",
+    "static/css/main.e7dc27b8.chunk.css.map": "/joeyChauProjectFive/static/css/main.e7dc27b8.chunk.css.map",
+    "static/js/2.ad601185.chunk.js.LICENSE.txt": "/joeyChauProjectFive/static/js/2.ad601185.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4cd48c2a.js",
+    "static/js/2.ad601185.chunk.js",
+    "static/css/main.e7dc27b8.chunk.css",
+    "static/js/main.01377f90.chunk.js"
+  ]
+}
