@@ -14,6 +14,7 @@
   --borderRad: 10px;
 }
 
+/*     GENERAL STYLING     */
 html { 
   font-size: 62.5%;
 }
@@ -31,7 +32,7 @@ body {
       var(--bg-accent) 30px,
       var(--bg-accent) 31px)*/
 } 
-h1,h2 {
+h1, h2 {
   font-family: var(--titleFont);
   color: var(--hColour);
 }
@@ -68,82 +69,11 @@ h1 {
   padding: 2em 0;
   margin: 1em 0;
 }
+
+/*      POSTS     */
 .postContainer, .newBtn {
   padding: 1em;
   margin-bottom: 2em;
-}
-.newBtn {
-  display: block;
-  text-transform: lowercase;
-  width: 100%;
-}
-form {
-  background-color: var(--bgAccent);
-  border: none !important;
-}
-form > *:not(div), .impBtn {
-  width: 100%;
-  border: 1px dashed var(--bgColour);
-  border-radius: var(--borderRad);
-  padding: 0.6em 1em;
-  margin-bottom: 0.8em;
-}
-form> *:not(div):focus {
-  outline-offset: -5px;
-}
-form input:first-of-type {
-  font-size: 1.6em;
-  padding: 0.375em 0.625em;
-  margin-bottom: 0.5em;
-}
-input::placeholder,
-textarea::placeholder {
-  opacity: 0.7;
-}
-.bannerImg {
-  width: 90%;
-  position: relative;
-  overflow: hidden;
-  padding-top: 35.25%;
-  margin: 1.6em auto 0.8em;
-  border-radius: var(--borderRad);
-}
-form .bannerImg {
-  margin: 0 auto 0.8em;
-}
-.noImg {
-  border: 1px dashed var(--bgColour);
-  cursor: pointer;
-}
-.noImg p {
-  position: absolute;
-  height: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-10%);
-  opacity: 0.7;
-}
-.bannerImg img{
-  position: absolute;
-  top: -25%;
-  left: 0;
-}
-textarea {
-  resize: none;
-}
-.impBtn {
-  width: 175px;
-  border: none;
-  background-color: var(--bgColour);
-}
-form > div:last-child {
-  text-align: right;
-}
-.btnContainer {
-  padding-bottom: 2em;
-}
-.delBtn {
-  margin: 0 2em;
 }
 .postHeader {
   display: flex;
@@ -153,6 +83,13 @@ form > div:last-child {
 h2 {
   font-size: 1.6em;
   font-style: italic;
+}
+.postInfo {
+  font-size: 0.6em;
+  font-style: italic;
+  display: block;
+  padding: 0.6em 0 0.4em;
+  border-bottom: 1px solid var(--bgAccent);
 }
 .heartContainer {
   display: flex;
@@ -171,22 +108,91 @@ h2 {
 .oldHeart {
   color: #973f3f;
 }
+.bannerImg {
+  width: 90%;
+  position: relative;
+  overflow: hidden;
+  padding-top: 35.25%;
+  margin: 1.6em auto 0.8em;
+  border-radius: var(--borderRad);
+}
+.bannerImg img {
+  position: absolute;
+  top: -25%;
+  left: 0;
+}
 .imgCredit {
   font-size: 0.5em;
   font-style: italic;
   text-align: center;
   margin-top: -1.6em;
 }
-.postInfo {
-  font-size: 0.6em;
-  font-style: italic;
-  display: block;
-  padding: 0.6em 0 0.4em;
-  border-bottom: 1px solid var(--bgAccent);
-}
 .postContainer p {
-  padding: 1em 0;
+  padding: 1.6em 0 2em;
 }
 .songInfo {
+  text-align: center;
   font-size: 0.6em;
+}
+
+/*     NEW POST FORM     */
+.newBtn {
+  display: block;
+  text-transform: lowercase;
+  width: 100%;
+}
+form {
+  background-color: var(--bgAccent);
+  border: none !important;
+}
+form > *:not(div), .impBtn {
+  width: 100%;
+  border: 1px dashed var(--bgColour);
+  border-radius: var(--borderRad);
+  padding: 0.6em 1em;
+  margin-bottom: 0.8em;
+}
+form> *:not(div):not(.impBtn):focus {
+  outline-offset: -5px;
+}
+form input:first-of-type {
+  font-size: 1.6em;
+  padding: 0.375em 0.625em;
+  margin-bottom: 0.5em;
+}
+input::placeholder,
+textarea::placeholder {
+  opacity: 0.7;
+}
+form .bannerImg {
+  margin: 0 auto 0.8em;
+}
+.noImg {
+  border: 1px dashed var(--bgColour);
+  cursor: pointer;
+}
+.noImg p {
+  position: absolute;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-10%);
+  opacity: 0.7;
+}
+textarea {
+  resize: none;
+}
+.impBtn {
+  width: 175px;
+  border: none;
+  background-color: var(--bgColour);
+}
+form > div:last-child {
+  text-align: right;
+}
+.btnContainer {
+  padding-bottom: 2em;
+}
+.delBtn {
+  margin: 0 2em;
 }

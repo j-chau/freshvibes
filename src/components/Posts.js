@@ -22,7 +22,7 @@ const Post = ({ header, description, songList, banner, id }) => {
 
                     return (
                         <li className="songInfo" key={index}>
-                            <iframe style={{ border: "0", width: "100%", height: "42px" }} src={urlString} title={el.credit} seamless>
+                            <iframe src={urlString} title={el.credit} seamless>
                                 <a href={el.embedLink}>{el.credit}</a>
                             </iframe>
                         </li>

@@ -29,3 +29,8 @@ img {
   width: 100%;
   filter: grayscale(50%) sepia(0.35);
 }
+iframe {
+  border: none;
+  width: 96%;
+  height: 42px;
+}
