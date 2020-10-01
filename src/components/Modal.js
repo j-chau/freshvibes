@@ -101,6 +101,7 @@ class Modal extends Component {
                                     alt={el.alt_description}
                                     className="imgThumbs"
                                     onClick={() => this.selectImg(el)}
+                                    tabIndex={0}
                                 />
                             )
                         })}
