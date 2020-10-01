@@ -12,7 +12,7 @@ import NewForm from './components/NewForm.js';
 //    o add transitions
 //  x onClick newButton trigger function to intake user data
 //  x Unsplash API call made when title loses focus after text input
-//  o use 'novalidate' and 'required' to set required fields with custom error messages
+//  x use 'novalidate' and 'required' to set required fields with custom error messages
 //  x onClick delete: clear form and close form
 //  x onClick post: add date and time to data, push user data to firebase
 // likeCounter: 
@@ -28,6 +28,7 @@ class App extends Component {
     this.state = {
       posts: [],
       showNew: false,
+      touchscreen: false
     }
   }
 
@@ -46,6 +47,8 @@ class App extends Component {
         posts: newState
       })
     });
+    // check if device is using touchscreen (no access to bandcamp's embed codes when using bandcamp.com on touch enabled/mobile devices)
+    if (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)) this.setState({ touchscreen: true })
   }
 
   savePost = (userInput) => {
@@ -98,13 +101,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        < h1 className="block">fresh vibes</h1>
-        {!this.state.showNew
-          ? <button className="block newBtn" onClick={() => this.setState({ showNew: true })}>+ New</button>
-          : <NewForm
-            closeForm={() => this.setState({ showNew: false })}
-            handleSubmit={this.savePost}
-          />}
+        <h1 className="block">fresh vibes</h1>
+
+        {this.state.touchscreen ? "" :
+          !this.state.showNew
+            ? <button className="block newBtn" onClick={() => this.setState({ showNew: true })}>+ New</button>
+            : <NewForm
+              closeForm={() => this.setState({ showNew: false })}
+              handleSubmit={this.savePost}
+            />}
+
         {this.state.posts.map(el => {
           const { header, description, songList, banner } = el.content;
           return (
