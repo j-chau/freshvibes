@@ -13,6 +13,10 @@
   /* STYLING */
   --borderRad: 10px;
 }
+@keyframes fadeout {
+  0% { opacity: 100% ;}
+  100% { opacity: 0% ;}
+}
 
 /*     GENERAL STYLING     */
 html { 
@@ -128,6 +132,7 @@ h2 {
   margin-top: -1.6em;
 }
 .postContainer p {
+  line-height: 1.4em;
   padding: 1.6em 0 2em;
 }
 .songInfo {
@@ -207,5 +212,6 @@ form > div:last-child {
 }
 .show {
   display: block;
-  opacity: 1;
+  /* opacity: 1; */
+  animation: fadeout 2s ease-out 3s 1 normal forwards;
 }

@@ -5,17 +5,16 @@ class NewForm extends Component {
     constructor() {
         super();
         this.state = {
+            title: '',
+            author: '',
+            descript: '',
+            songListCode: [],
+            songList: [],
+            banner: {
+                imgUrl: ''
+            },
             numSongs: 1,
             showImg: false,
-            userInput: {
-                title: '',
-                author: '',
-                descript: '',
-                songList: [],
-                banner: {
-                    imgUrl: ''
-                }
-            },
             error: false
         }
     }
@@ -28,7 +27,7 @@ class NewForm extends Component {
                     <label className="srOnly" htmlFor="inputEmbed">Song Embed Code</label>
                     <input type="text"
                         id="inputEmbed"
-                        value={this.state.userInput.songList[i]}
+                        value={this.state.songListCode[i]}
                         name="songList"
                         onChange={this.handleChange}
                         placeholder="Song Embed Code"
@@ -41,10 +40,11 @@ class NewForm extends Component {
 
     addImg = (e, selectImg) => {
         e.preventDefault();
-        const copyState = { ...this.state.userInput };
-        copyState.banner = { ...selectImg }
+        // const copyState = { ...this.state };
+        // copyState.banner = { ...selectImg }
         this.setState({
-            userInput: copyState,
+            banner: { ...selectImg },
+            // userInput: copyState,
             showImg: false
         })
     }
@@ -56,13 +56,18 @@ class NewForm extends Component {
     }
 
     handleChange = (e) => {
-        const copyState = { ...this.state.userInput };
+        const copyState = { ...this.state };
         const { name, value } = e.target;
         // TODO: try using prevState to avoid Warning
-        if (name === "songList") copyState.songList[this.state.numSongs - 1] = value;
-        else copyState[name] = value;
+        const index = this.state.numSongs - 1;
+        if (name === "songList") {
+            this.setState({})
+        };
+        // copyState.songListCode[index] = value;
+        // else copyState[name] = value;
         this.setState({
-            userInput: copyState
+            [name]: value
+            // userInput: copyState
         })
     }
 
@@ -78,22 +83,78 @@ class NewForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const copyStateValues = Object.values({ ...this.state.userInput });
+        let submit = true;
+
+        const copySongList = [...this.state.songListCode];
+        const songListById = copySongList.map(el => {
+            if (el !== undefined && el.length > 0) {
+
+                // get album id
+                const albumIdStart = el.indexOf("album") + "album".length + 1;
+                const albumIdEnd = el.indexOf("/", albumIdStart);
+                const albumId = el.slice(albumIdStart, albumIdEnd);
+
+                // get artist link
+                const linkStart = el.indexOf("<a href") + "<a href".length + 2;
+                const linkEnd = el.indexOf("\">", linkStart);
+                const artistLink = el.slice(linkStart, linkEnd);
+
+                // get artist credit
+                const creditEnd = el.indexOf("</a>", linkEnd);
+                const artistCredit = el.slice(linkEnd + 2, creditEnd);
+
+                if (albumId < 1 || artistLink < 1 || artistCredit < 1) {
+                    submit = false;
+                    console.log("song id check: failed");
+                }
+                else {
+                    console.log("song id check: pass");
+                    return {
+                        credit: artistCredit,
+                        embedId: albumId,
+                        embedLink: artistLink
+                    }
+                }
+            }
+        })
+
+
+        const copyStateValues = Object.values({ ...this.state });
         const errCheck = copyStateValues.filter(el => {
             let check = el;
             if (el.length === undefined) check = Object.values(el);
             return check.length > 0
         });
-        if (errCheck.length !== 5) this.setState({ error: true });
-        else {
-            console.log("completed form");
-            this.setState({ numSongs: 1 });
-            this.props.handleSubmit(this.state.userInput);
+        console.log(errCheck);
+        if (errCheck.length < 5) {
+            submit = false;
+            console.log("length check: fail");
         }
+        // else {
+        //     copyStateValues[3].forEach(el => {
+        //         if (el.indexOf("bandcamp.com/EmbeddedPlayer") < 0 && el.length > 0) {
+        //             submit = false;
+        //             return;
+        //         }
+        //     })
+        // }
+
+        console.log("submit:" + submit);
+        if (submit) {
+            this.setState(prevState => ({
+                numSongs: 1,
+                // userInput: {
+                //     ...prevState.userInput,
+                songList: songListById
+                // }
+            }));
+            this.props.handleSubmit(this.state);
+        } else this.setState({ error: true });
+        console.log(this.state.songList);
     }
 
     render() {
-        const { title, author, descript, banner } = this.state.userInput;
+        const { title, author, descript, banner } = this.state;
         const offBtn = this.state.numSongs < 3 ? false : true;
         return (
             <>

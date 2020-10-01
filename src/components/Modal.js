@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 
-
+// TODO: add tabindex to img selection from unsplash
 class Modal extends Component {
     constructor() {
         super();
@@ -49,7 +49,7 @@ class Modal extends Component {
         clearTimeout(this.timer);
         this.timer = setTimeout(() => {
             this.doSearch();
-        }, 1500)
+        }, 1000)
 
     }
     doSearch() {

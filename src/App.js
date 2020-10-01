@@ -55,7 +55,7 @@ class App extends Component {
     const { title, author, descript, songList, banner } = userInput;
     const currentDate = new Date();
     const publishDate = `${currentDate.getFullYear()}-${("0" + (currentDate.getMonth() + 1)).slice(-2)}-${("0" + currentDate.getDate()).slice(-2)}`
-    let firebaseArr = {
+    let firebaseObj = {
       header: {
         author,
         title,
@@ -63,36 +63,13 @@ class App extends Component {
         hearts: 0
       },
       description: descript,
-      songList: [],
+      songList,
       banner
     }
-
-    const copySongList = [...songList];
-    for (let i = 0; i < copySongList.length; i++) {
-      const el = copySongList[i]
-
-      // get album id
-      const albumIdStart = el.indexOf("album") + "album".length + 1;
-      const albumIdEnd = el.indexOf("/", albumIdStart);
-      const albumId = el.slice(albumIdStart, albumIdEnd);
-
-      // get artist link
-      const linkStart = el.indexOf("<a href") + "<a href".length + 2;
-      const linkEnd = el.indexOf("\">", linkStart);
-      const artistLink = el.slice(linkStart, linkEnd);
-
-      // get artist credit
-      const creditEnd = el.indexOf("</a>", linkEnd);
-      const artistCredit = el.slice(linkEnd + 2, creditEnd);
-
-      firebaseArr.songList.push({
-        credit: artistCredit,
-        embedId: albumId,
-        embedLink: artistLink
-      })
-    }
+    console.log(songList);
+    console.log(firebaseObj);
     const dbRef = firebase.database().ref();
-    dbRef.push(firebaseArr);
+    // dbRef.push(firebaseObj);
     this.setState({
       showNew: false
     })
