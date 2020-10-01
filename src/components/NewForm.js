@@ -147,7 +147,7 @@ class NewForm extends Component {
                         <button
                             onClick={this.handleAdd} className="impBtn addSongBtn" disabled={offBtn} aria-disabled={offBtn}>add new song</button>
                     </div>
-                    <div>
+                    <div className="btnContainer">
                         <button onClick={this.props.closeForm} className="delBtn">delete</button>
                         <button type="submit" onClick={this.handleSubmit} className="impBtn">post</button>
                         <p className={"errMsg" + (!this.state.error ? "" : " show")}>all fields are required</p>
