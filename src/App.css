@@ -141,21 +141,21 @@ h2 {
   text-transform: lowercase;
   width: 100%;
 }
-form {
+.form {
   background-color: var(--bgAccent);
   border: none !important;
 }
-form > *:not(div), .impBtn {
+.form > *:not(div), .impBtn {
   width: 100%;
   border: 1px dashed var(--bgColour);
   border-radius: var(--borderRad);
   padding: 0.6em 1em;
   margin-bottom: 0.8em;
 }
-form> *:not(div):not(.impBtn):focus {
+form > *:not(div):not(.impBtn):focus {
   outline-offset: -5px;
 }
-form input:first-of-type {
+.form input:first-of-type {
   font-size: 1.6em;
   padding: 0.375em 0.625em;
   margin-bottom: 0.5em;
@@ -164,7 +164,7 @@ input::placeholder,
 textarea::placeholder {
   opacity: 0.7;
 }
-form .bannerImg {
+.form .bannerImg {
   margin: 0 auto 0.8em;
 }
 .noImg {
@@ -176,13 +176,13 @@ form .bannerImg {
   height: 100%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-10%);
+  transform: translate(-50%, 0%);
   opacity: 0.7;
 }
 textarea {
   resize: none;
 }
-.impBtn {
+.form .impBtn {
   width: 175px;
   border: none;
   background-color: var(--bgColour);
@@ -193,10 +193,7 @@ form > div:last-child {
 .addSongBtn {
   margin-bottom: 2em;
 }
-.btnContainer {
-  position: relative;
-}
-.delBtn {
+.form .delBtn {
   margin: 0 2em;
 }
 .errMsg {

@@ -47,6 +47,12 @@ class NewForm extends Component {
         })
     }
 
+    closeModal = () => {
+        this.setState({
+            showImg: false
+        })
+    }
+
     handleChange = (e) => {
         const copyState = { ...this.state.userInput };
         const { name, value } = e.target;
@@ -92,10 +98,10 @@ class NewForm extends Component {
                 {this.state.showImg && (
                     <>
                         <div className="modalBg"></div>
-                        <Modal handleSelect={this.addImg} />
+                        <Modal handleSelect={this.addImg} closeModal={this.closeModal} />
                     </>
                 )}
-                <form className="block newBtn">
+                <form className="block newBtn form">
                     <label className="srOnly" htmlFor="inputTitle">Post Title</label>
                     <input type="text"
                         id="postTitle"
@@ -136,7 +142,7 @@ class NewForm extends Component {
                         <button
                             onClick={this.handleAdd} className="impBtn addSongBtn" disabled={offBtn} aria-disabled={offBtn}>add new song</button>
                     </div>
-                    <div className="btnContainer">
+                    <div>
                         <button onClick={this.props.closeForm} className="delBtn">delete</button>
                         <button type="submit" onClick={this.handleSubmit} className="impBtn">post</button>
                         <p className={"errMsg" + (!this.state.error ? "" : " show")}>all fields are required</p>
