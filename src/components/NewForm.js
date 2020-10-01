@@ -12,7 +12,9 @@ class NewForm extends Component {
                 author: '',
                 descript: '',
                 songList: [],
-                banner: {}
+                banner: {
+                    imgUrl: ''
+                }
             },
             error: false
         }
@@ -120,8 +122,11 @@ class NewForm extends Component {
                         placeholder="Author Name"
                         required />
 
-                    <div className="bannerImg noImg" onClick={() => this.setState({ showImg: true })} tabIndex={0}>
-                        {Object.keys(banner).length > 0
+                    <div
+                        className={"bannerImg" + (banner.imgUrl.length < 1 ? " noImg" : "")}
+                        onClick={() => this.setState({ showImg: true })}
+                        tabIndex={0}>
+                        {banner.imgUrl.length > 1
                             ? <img src={banner.imgUrl} alt={banner.altText} />
                             : <p>Click to select an image</p>
                         }
