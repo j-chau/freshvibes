@@ -49,7 +49,7 @@ class Modal extends Component {
         clearTimeout(this.timer);
         this.timer = setTimeout(() => {
             this.doSearch();
-        }, 1500)
+        }, 1000)
 
     }
     doSearch() {

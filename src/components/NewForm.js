@@ -52,16 +52,11 @@ class NewForm extends Component {
         })
     }
 
-    closeModal = () => {
-        this.setState({
-            showImg: false
-        })
-    }
+    closeModal = () => this.setState({ showImg: false });
 
     handleChange = (e) => {
         const copyState = { ...this.state.userInput };
         const { name, value } = e.target;
-        // TODO: try using prevState to avoid Warning
         if (name === "songList") copyState.songList[this.state.numSongs - 1] = value;
         else copyState[name] = value;
         this.setState({
@@ -82,12 +77,14 @@ class NewForm extends Component {
     handleSubmit = (e) => {
         let errMsg = "";
         e.preventDefault();
+
         const copyStateValues = Object.values({ ...this.state.userInput });
         const errCheck = copyStateValues.filter(el => {
             let check = el;
             if (el.length === undefined) check = Object.values(el);
             return check.length > 0
         });
+
         if (errCheck.length !== 5) errMsg = "all fields are required";
         else {
             copyStateValues[3].forEach(el => {
@@ -96,10 +93,9 @@ class NewForm extends Component {
                 }
             })
         }
-        if (errMsg.length === 0) {
-            console.log("completed form");
-            this.props.handleSubmit(this.state.userInput);
-        } else this.setState({
+
+        if (errMsg.length === 0) this.props.handleSubmit(this.state.userInput);
+        else this.setState({
             error: {
                 isError: true,
                 errorMsg: errMsg

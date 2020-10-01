@@ -7,21 +7,6 @@ import firebase from './firebase.js';
 import Post from './components/Posts.js';
 import NewForm from './components/NewForm.js';
 
-// click for new post:
-//  x new post form expands from button -> form component
-//    o add transitions
-//  x onClick newButton trigger function to intake user data
-//  x Unsplash API call made when title loses focus after text input
-//  x use 'novalidate' and 'required' to set required fields with custom error messages
-//  x onClick delete: clear form and close form
-//  x onClick post: add date and time to data, push user data to firebase
-// likeCounter: 
-//  x increment on click
-//  x push value to firebase
-//  x use localStorage to lock one like per user
-
-
-
 class App extends Component {
   constructor() {
     super();
@@ -43,11 +28,10 @@ class App extends Component {
           content: data[el]
         })
       }
-      this.setState({
-        posts: newState
-      })
+      this.setState({ posts: newState })
     });
-    // check if device is using touchscreen (no access to bandcamp's embed codes when using bandcamp.com on touch enabled/mobile devices)
+
+    // checks if device is using touchscreen (no access to bandcamp's embed codes when using bandcamp.com on touch enabled/mobile devices)
     if (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)) this.setState({ touchscreen: true })
   }
 
@@ -93,9 +77,7 @@ class App extends Component {
     }
     const dbRef = firebase.database().ref();
     dbRef.push(firebaseArr);
-    this.setState({
-      showNew: false
-    })
+    this.setState({ showNew: false })
   }
 
   render() {
