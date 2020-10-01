@@ -25,12 +25,6 @@ body {
   color: var(--fontColour);
   letter-spacing: 0.5px;
   background-color: var(--bgColour);
-  /* background-image: 
-    repeating-linear-gradient(90deg,
-      transparent,
-      transparent 30px,
-      var(--bg-accent) 30px,
-      var(--bg-accent) 31px)*/
 } 
 h1, h2 {
   font-family: var(--titleFont);
@@ -118,7 +112,7 @@ h2 {
 }
 .bannerImg img {
   position: absolute;
-  top: -25%;
+  top: -35%;
   left: 0;
 }
 .imgCredit {
@@ -192,7 +186,7 @@ form > div:last-child {
   text-align: right;
 }
 .addSongBtn {
-  margin-bottom: 2em;
+  margin-bottom: 3em;
 }
 .form .delBtn {
   margin: 0 2em;
@@ -203,11 +197,12 @@ form > div:last-child {
 .errMsg {
   position: absolute;
   display: none;
-  top: -2.6em;
+  top: -3.8em;
   right: 0;
+  font-size: 0.6em;
   background-color: var(--bgColour);
   border-radius: var(--borderRad);
-  padding: 0.4em 0.5em;
+  padding: 0.8em 1.2em;
 }
 .show {
   display: unset;

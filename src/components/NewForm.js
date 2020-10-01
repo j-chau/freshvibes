@@ -16,7 +16,10 @@ class NewForm extends Component {
                     imgUrl: ''
                 }
             },
-            error: false
+            error: {
+                isError: false,
+                errorMsg: ''
+            },
         }
     }
 
@@ -77,6 +80,7 @@ class NewForm extends Component {
     }
 
     handleSubmit = (e) => {
+        let errMsg = "";
         e.preventDefault();
         const copyStateValues = Object.values({ ...this.state.userInput });
         const errCheck = copyStateValues.filter(el => {
@@ -84,12 +88,24 @@ class NewForm extends Component {
             if (el.length === undefined) check = Object.values(el);
             return check.length > 0
         });
-        if (errCheck.length !== 5) this.setState({ error: true });
+        if (errCheck.length !== 5) errMsg = "all fields are required";
         else {
-            console.log("completed form");
-            this.setState({ numSongs: 1 });
-            this.props.handleSubmit(this.state.userInput);
+            copyStateValues[3].forEach(el => {
+                if (el.indexOf("bandcamp.com/EmbeddedPlayer") < 0 && el.length > 0) {
+                    errMsg = "please use the embed code from bandcamp";
+                }
+            })
         }
+        if (errMsg.length === 0) {
+            console.log("completed form");
+            this.props.handleSubmit(this.state.userInput);
+        } else this.setState({
+            error: {
+                isError: true,
+                errorMsg: errMsg
+            }
+        });
+
     }
 
     render() {
@@ -150,7 +166,7 @@ class NewForm extends Component {
                     <div className="btnContainer">
                         <button onClick={this.props.closeForm} className="delBtn">delete</button>
                         <button type="submit" onClick={this.handleSubmit} className="impBtn">post</button>
-                        <p className={"errMsg" + (!this.state.error ? "" : " show")}>all fields are required</p>
+                        <p className={"errMsg" + (!this.state.error.isError ? "" : " show")}>{this.state.error.errorMsg}</p>
                     </div>
                 </form>
             </>
