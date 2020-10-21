@@ -49,11 +49,13 @@ class HeartCounter extends Component {
     render() {
         return (
             <div className="heartContainer">
-                <p className="counterDisplay">{this.state.hearts}</p>
+                <p className="counterDisplay" aria-hidden="true">{this.state.hearts}</p>
+                <span className="srOnly">{this.state.hearts + " likes"}</span>
                 <i
                     className={"fas fa-heart" + (this.state.oldHeart ? " oldHeart" : "")}
                     onClick={() => this.handleClick(this.props.id)}
                     tabIndex={0}
+                    aria-label="like this post"
                 ></i>
             </div>
         )
