@@ -23,6 +23,7 @@ class NewForm extends Component {
         }
     }
 
+    // create input fields for adding embed codes
     addSongs = () => {
         let addSongList = [];
         for (let i = 0; i < this.state.numSongs; i++) {
@@ -42,6 +43,7 @@ class NewForm extends Component {
         return addSongList;
     }
 
+    // save selected banner img to state
     addImg = (e, selectImg) => {
         e.preventDefault();
         const copyState = { ...this.state.userInput };
@@ -54,6 +56,7 @@ class NewForm extends Component {
 
     closeModal = () => this.setState({ showImg: false });
 
+    // save text from input fields to state
     handleChange = (e) => {
         const copyState = { ...this.state.userInput };
         const { name, value } = e.target;
@@ -64,6 +67,7 @@ class NewForm extends Component {
         })
     }
 
+    // trigger creating new input field for embed code (max. of 3)
     handleAdd = (e) => {
         e.preventDefault();
         if (this.state.numSongs < 3) {
@@ -78,14 +82,16 @@ class NewForm extends Component {
         let errMsg = "";
         e.preventDefault();
 
+        // check to see if all input fields have been completed
         const copyStateValues = Object.values({ ...this.state.userInput });
         const errCheck = copyStateValues.filter(el => {
             let check = el;
             if (el.length === undefined) check = Object.values(el);
             return check.length > 0
         });
-
         if (errCheck.length !== 5) errMsg = "all fields are required";
+
+        // check if embed code is from bandcamp
         else {
             copyStateValues[3].forEach(el => {
                 if (el.indexOf("bandcamp.com/EmbeddedPlayer") < 0 && el.length > 0) {

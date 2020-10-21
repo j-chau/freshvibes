@@ -10,6 +10,7 @@ class HeartCounter extends Component {
         }
     }
 
+    // check if browser has previous record of likes
     componentDidMount() {
         const heartStorage = JSON.parse(window.localStorage.getItem("heartsLog"));
         if (heartStorage !== null) {
@@ -24,6 +25,7 @@ class HeartCounter extends Component {
         })
     }
 
+    // update like counter on firebase
     handleClick = (id) => {
         // using localStorage to limit number of hearts per computer/user to 1
         let heartStorage = JSON.parse(window.localStorage.getItem("heartsLog"));

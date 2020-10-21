@@ -17,6 +17,7 @@ class App extends Component {
     }
   }
 
+  // get saved data from Firebase
   componentDidMount() {
     const dbRef = firebase.database().ref();
     dbRef.on("value", res => {
@@ -51,6 +52,7 @@ class App extends Component {
       banner
     }
 
+    // deconstruct bandcamp embed code
     const copySongList = [...songList];
     for (let i = 0; i < copySongList.length; i++) {
       const el = copySongList[i]

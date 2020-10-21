@@ -19,6 +19,7 @@ class Modal extends Component {
 
     // code to show / hide elements from assistive tech from here: https://codepen.io/noahblon/pen/yJpXka
 
+    // hide tabbing for all elements behind modal, show tabbing for elements in modal
     componentDidMount() {
         const FOCUSABLE_SELECTORS = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]';
         const main = document.querySelector('body');
@@ -32,6 +33,7 @@ class Modal extends Component {
         document.body.style.overflow = "hidden";
     }
 
+    // hide tabbing for elements in modal, show tabbing for all elements in main
     componentWillUnmount() {
         const FOCUSABLE_SELECTORS = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]';
         const main = document.querySelector('body');
@@ -42,6 +44,7 @@ class Modal extends Component {
         document.body.style.overflow = "unset";
     }
 
+    // save search term to state; wait 1 sec after user stops typing before doing API call
     handleChange = (e) => {
         this.setState({
             searchTerm: e.target.value
@@ -50,8 +53,9 @@ class Modal extends Component {
         this.timer = setTimeout(() => {
             this.doSearch();
         }, 1000)
-
     }
+
+    // API call to Unsplash
     doSearch() {
         Axios({
             url: "https://api.unsplash.com/search/photos/",
@@ -70,6 +74,7 @@ class Modal extends Component {
         })
     }
 
+    // save user selected img to state
     selectImg = ({ urls, alt_description, user }) => {
         this.setState({
             selectImg: {
