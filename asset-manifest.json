@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/freshvibes/static/css/main.34a539ec.chunk.css",
-    "main.js": "/freshvibes/static/js/main.03833a03.chunk.js",
-    "main.js.map": "/freshvibes/static/js/main.03833a03.chunk.js.map",
+    "main.css": "/freshvibes/static/css/main.bf8af8b3.chunk.css",
+    "main.js": "/freshvibes/static/js/main.e553ecd1.chunk.js",
+    "main.js.map": "/freshvibes/static/js/main.e553ecd1.chunk.js.map",
     "runtime-main.js": "/freshvibes/static/js/runtime-main.0a0954f5.js",
     "runtime-main.js.map": "/freshvibes/static/js/runtime-main.0a0954f5.js.map",
     "static/js/2.34d85d6f.chunk.js": "/freshvibes/static/js/2.34d85d6f.chunk.js",
     "static/js/2.34d85d6f.chunk.js.map": "/freshvibes/static/js/2.34d85d6f.chunk.js.map",
     "index.html": "/freshvibes/index.html",
-    "precache-manifest.d3e91647e6a3ef2d16d19cad107f385e.js": "/freshvibes/precache-manifest.d3e91647e6a3ef2d16d19cad107f385e.js",
+    "precache-manifest.ff464efc5c4cee792e1a43e03dac7a05.js": "/freshvibes/precache-manifest.ff464efc5c4cee792e1a43e03dac7a05.js",
     "service-worker.js": "/freshvibes/service-worker.js",
-    "static/css/main.34a539ec.chunk.css.map": "/freshvibes/static/css/main.34a539ec.chunk.css.map",
+    "static/css/main.bf8af8b3.chunk.css.map": "/freshvibes/static/css/main.bf8af8b3.chunk.css.map",
     "static/js/2.34d85d6f.chunk.js.LICENSE.txt": "/freshvibes/static/js/2.34d85d6f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.0a0954f5.js",
     "static/js/2.34d85d6f.chunk.js",
-    "static/css/main.34a539ec.chunk.css",
-    "static/js/main.03833a03.chunk.js"
+    "static/css/main.bf8af8b3.chunk.css",
+    "static/js/main.e553ecd1.chunk.js"
   ]
 }

@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4e391038eed38ff318e1956c456765cc",
+    "revision": "15c7195d440cc7ecd32264aef9955c9b",
     "url": "/freshvibes/index.html"
   },
   {
-    "revision": "ab1739b7484115829aa1",
-    "url": "/freshvibes/static/css/main.34a539ec.chunk.css"
+    "revision": "e5fddf22b677e0ee044a",
+    "url": "/freshvibes/static/css/main.bf8af8b3.chunk.css"
   },
   {
     "revision": "7ab356e31fa67df93eeb",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/freshvibes/static/js/2.34d85d6f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ab1739b7484115829aa1",
-    "url": "/freshvibes/static/js/main.03833a03.chunk.js"
+    "revision": "e5fddf22b677e0ee044a",
+    "url": "/freshvibes/static/js/main.e553ecd1.chunk.js"
   },
   {
     "revision": "f6a094b690210a0b4651",
