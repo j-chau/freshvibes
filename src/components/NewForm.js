@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Modal from './Modal.js'
 
 class NewForm extends Component {
@@ -11,7 +11,7 @@ class NewForm extends Component {
                 title: '',
                 author: '',
                 descript: '',
-                songList: [],
+                songList: [''],
                 banner: {
                     imgUrl: ''
                 }
@@ -25,19 +25,21 @@ class NewForm extends Component {
 
     // create input fields for adding embed codes
     addSongs = () => {
+        const { songList } = this.state.userInput;
         let addSongList = [];
-        for (let i = 0; i < this.state.numSongs; i++) {
+        for (let i = 0; i < songList.length; i++) {
             addSongList.push(
-                <Fragment key={i}>
-                    <label className="srOnly" htmlFor="inputEmbed">Song Embed Code</label>
+                <li key={i}>
+                    <label className="srOnly" htmlFor={"inputEmbed" + i}>Song Embed Code</label>
                     <input type="text"
-                        id="inputEmbed"
-                        value={this.state.userInput.songList[i]}
+                        id={"inputEmbed" + i}
+                        value={songList[i]}
                         name="songList"
                         onChange={this.handleChange}
                         placeholder="Song Embed Code"
+                        className="songInput"
                         required />
-                </Fragment>
+                </li>
             )
         }
         return addSongList;
@@ -59,8 +61,11 @@ class NewForm extends Component {
     // save text from input fields to state
     handleChange = (e) => {
         const copyState = { ...this.state.userInput };
-        const { name, value } = e.target;
-        if (name === "songList") copyState.songList[this.state.numSongs - 1] = value;
+        const { name, value, id } = e.target;
+        const index = id.slice(-1);
+        if (name === "songList") {
+            copyState.songList[index] = value;
+        }
         else copyState[name] = value;
         this.setState({
             userInput: copyState
@@ -71,10 +76,16 @@ class NewForm extends Component {
     handleAdd = (e) => {
         e.preventDefault();
         if (this.state.numSongs < 3) {
+            let copySongList = [...this.state.userInput.songList];
+            copySongList.push("");
             const newCount = this.state.numSongs + 1;
-            this.setState({
-                numSongs: newCount
-            })
+            this.setState(prevState => ({
+                numSongs: newCount,
+                userInput: {
+                    ...prevState.userInput,
+                    songList: copySongList
+                }
+            }), () => this.addSongs())
         }
     }
 
@@ -159,7 +170,9 @@ class NewForm extends Component {
                         placeholder="add a description about your song or album selection. let others konw what kind of mood to expect."
                         required></textarea>
 
-                    {this.addSongs()}
+                    <ul>
+                        {this.addSongs()}
+                    </ul>
 
                     <div>
                         <button

@@ -53,7 +53,7 @@ class App extends Component {
     }
 
     // deconstruct bandcamp embed code
-    const copySongList = [...songList];
+    const copySongList = songList.filter(el => el.length > 0);
     for (let i = 0; i < copySongList.length; i++) {
       const el = copySongList[i]
 

@@ -139,17 +139,17 @@ h2 {
   background-color: var(--bgAccent);
   border: none !important;
 }
-.form > *:not(div), .impBtn {
+.form > *:not(div):not(ul), .impBtn, .songInput {
   width: 100%;
   border: 1px dashed var(--bgColour);
   border-radius: var(--borderRad);
   padding: 0.6em 1em;
   margin-bottom: 0.8em;
 }
-form > *:not(div):not(.impBtn):focus {
+form > *:not(div):not(.impBtn):focus, .songInput:focus {
   outline-offset: -5px;
 }
-.form input:first-of-type {
+.form > input:first-of-type {
   font-size: 1.6em;
   padding: 0.375em 0.625em;
   margin-bottom: 0.5em;
@@ -183,6 +183,9 @@ textarea {
 }
 form > div:last-child {
   text-align: right;
+}
+li {
+  border: inherit;
 }
 .addSongBtn {
   margin-bottom: 3em;
